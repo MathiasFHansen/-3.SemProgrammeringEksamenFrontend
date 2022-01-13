@@ -7,8 +7,6 @@ export default function NewRace(props){
   const [raceDate, setRaceDate] = useState(initialState.date);
   const [raceTime, setRaceTime] = useState(initialState.time);
   const [raceLocation, setRaceLocation] = useState(initialState.location);
-  const [fullRace, setFullRace] = useState({});
-
  
 
   const handleSubmit = (event) => {

@@ -2,6 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import "./style2.css";
 import NewRace from "./components/NewRace";
+import CarsFromRace from "./components/CarsFromRace";
 import Home from "./components/Home";
 import Bored from "./components/Bored";
 import Cat from "./components/Cat";
@@ -103,6 +104,11 @@ export default function BasicExample() {
               NewRace
             </NavLink>
           </li>
+          <li>
+            <NavLink exact activeClassName="selected" to="/CarsFromRace">
+              CarsFromRace
+            </NavLink>
+          </li>
         </ul>
 
         <hr />
@@ -155,6 +161,11 @@ export default function BasicExample() {
             {facade.hasUserAccess("admin", loggedIn) && (
               <NewRace/> 
             )}
+            </Route>
+            <Route path="/CarsFromRace">
+              {facade.hasUserAccess("user", loggedIn) && (
+                <CarsFromRace/>
+              )}
             </Route>
           </Switch>
         </div>
