@@ -3,6 +3,7 @@ import "./App.css";
 import "./style2.css";
 import NewRace from "./components/NewRace";
 import CarsFromRace from "./components/CarsFromRace";
+import DeleteCar from "./components/DeleteCar";
 import Home from "./components/Home";
 import Bored from "./components/Bored";
 import Cat from "./components/Cat";
@@ -109,6 +110,11 @@ export default function BasicExample() {
               CarsFromRace
             </NavLink>
           </li>
+          <li>
+            <NavLink exact activeClassName="selected" to="/DeleteCar">
+              DeleteCar
+            </NavLink>
+          </li>
         </ul>
 
         <hr />
@@ -166,6 +172,11 @@ export default function BasicExample() {
               {facade.hasUserAccess("user", loggedIn) && (
                 <CarsFromRace/>
               )}
+            </Route>
+            <Route path="/DeleteCar">
+            {facade.hasUserAccess("admin", loggedIn) && (
+              <DeleteCar/> 
+            )}
             </Route>
           </Switch>
         </div>
