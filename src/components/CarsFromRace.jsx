@@ -7,61 +7,80 @@ export default function CarsFromRace(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setQuery(true);
-      
-    
-    //setLogin(initialState);
-  };
 
-  useEffect(() => {  
-      if(!query) return;   
     fetch(
-      `http://localhost:8080/3__semester_eksamen/api/RaceCarInfo/carsFromRace/${raceID}`
+      `https://www.mathias-filten-borg.dk/3.semesterEksamen/api/RaceCarInfo/carsFromRace/${raceID}`
     )
       .then((res) => res.json())
       .then((data) => {
         let tempArray = [];
-        data.forEach((element) => {
+        data.all.forEach((element) => {
           const newCar = {
             name: element.name,
             brand: element.brand,
             model: element.model,
             year: element.year,
           };
-
+          console.log(newCar);
           tempArray.push(newCar);
+          
         });
         setCar(tempArray);
-      });
-  }, []);
 
-  <div key={car}>
-    <table className="table">
-      <thead>
-        <tr>
-          <th scope="col">Name</th>
-          <th scope="col">Brand</th>
-          <th scope="col">Model</th>
-          <th scope="col">Year</th>
-        </tr>
-      </thead>
-      <tbody>
-        {car.map((currentCar) => (
-          <tr>
-            <td>{currentCar.name}</td>
-            <td>{currentCar.brand}</td>
-            <td>{currentCar.model}</td>
-            <td>{currentCar.year}</td>
-          </tr>
-        ))}
-      </tbody>
-    </table>
-  </div>;
+        //setLogin(initialState);
+      });
+  };
+
+  //   useEffect(() => {
+  //       if(!query) return;
+  //     fetch(
+  //       `http://localhost:8080/3__semester_eksamen/api/RaceCarInfo/carsFromRace/${raceID}`
+  //     )
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         let tempArray = [];
+  //         data.forEach((element) => {
+  //           const newCar = {
+  //             name: element.name,
+  //             brand: element.brand,
+  //             model: element.model,
+  //             year: element.year,
+  //           };
+
+  //           tempArray.push(newCar);
+  //         });
+  //         console.log(data);
+  //         setCar(tempArray);
+  //       });
+  //    }, []);
 
   const changeID = (event) => {
     //console.log([event.target.name])
     setRaceID(event.target.value);
   };
+
+  //   <div key={car}>
+  //     <table className="table">
+  //       <thead>
+  //         <tr>
+  //           <th scope="col">Name</th>
+  //           <th scope="col">Brand</th>
+  //           <th scope="col">Model</th>
+  //           <th scope="col">Year</th>
+  //         </tr>
+  //       </thead>
+  //       <tbody>
+  //         {car.map((currentCar) => (
+  //           <tr>
+  //             <td>{currentCar.name}</td>
+  //             <td>{currentCar.brand}</td>
+  //             <td>{currentCar.model}</td>
+  //             <td>{currentCar.year}</td>
+  //           </tr>
+  //         ))}
+  //       </tbody>
+  //     </table>
+  //   </div>;
 
   return (
     <div className="col-xs-1" align="center">
@@ -77,6 +96,27 @@ export default function CarsFromRace(props) {
         <br />
         <button type="submit">See Cars</button>
       </form>
+
+      <table className="table">
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Model</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          {car.map((currentCar) => (
+            <tr>
+              <td>{currentCar.name}</td>
+              <td>{currentCar.brand}</td>
+              <td>{currentCar.model}</td>
+              <td>{currentCar.year}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

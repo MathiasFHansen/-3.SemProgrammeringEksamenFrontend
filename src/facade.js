@@ -1,5 +1,5 @@
-const URL = "http://localhost:8080/3__semester_eksamen";
-
+const URL = "https://www.mathias-filten-borg.dk/3.semesterEksamen";
+const URL1 = "http://localhost:8080/3__semester_eksamen";
 function handleHttpErrors(res) {
   if (!res.ok) {
     return Promise.reject({ status: res.status, fullError: res.json() });

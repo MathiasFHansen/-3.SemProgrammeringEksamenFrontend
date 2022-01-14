@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 export default function AllRaces(props) {
     const [race, setRace] = useState([]);
     useEffect(() => {
-        fetch("http://localhost:8080/3__semester_eksamen/api/RaceCarInfo/Races")
+        fetch("https://www.mathias-filten-borg.dk/3.semesterEksamen/api/RaceCarInfo/Races")
           .then((res) => res.json())
           .then((data) => {
             let tempArray = [];  
@@ -35,7 +35,7 @@ export default function AllRaces(props) {
                 </thead>
                 <tbody>
                     {race.map((currentRace) => (
-                    <tr>
+                    <tr key={currentRace.name}>
                         <td>{currentRace.name}</td>
                         <td>{currentRace.date}</td>
                         <td>{currentRace.time}</td>

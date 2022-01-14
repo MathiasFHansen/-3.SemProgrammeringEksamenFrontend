@@ -17,7 +17,7 @@ export default function NewRace(props){
         headers: {'Content-Type': 'application/json' },
         body: JSON.stringify({ name: raceName, date: raceDate, time: raceTime, location: raceLocation })
       };
-      fetch('http://localhost:8080/3__semester_eksamen/api/RaceCarInfo/newRace',requestOptions)
+      fetch('https://www.mathias-filten-borg.dk/3.semesterEksamen/api/RaceCarInfo/newRace',requestOptions)
       
     
     //setLogin(initialState);
